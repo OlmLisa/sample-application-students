@@ -12,5 +12,4 @@ jobs:
           token: $SONAR_SECRET
           
 script:
-  - mvn clean verify sonar:sonar -Pcoverage -Dsonar.projectKey=OlmLisa_sample-application-students
-    
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=OlmLisa_sample-application-students 
