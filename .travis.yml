@@ -5,11 +5,22 @@ services:
 
 jobs:
   include:
+    - stage: publish_backend
+      script:
+        - docker build -t tp-db ./database
+        - docker push loulmi/tp-db
+    - stage: publish_httpd
+      script:
+        - docker build -t tp-http ./httpd
+        - docker push loulmi/tp-http
+    - stage: publish_api
+      script:
+        - docker build -t tp-api ./simple-api
+        - docker push loulmi/tp-api
     - stage: sonar_scanner
       addons:
         sonarcloud:
           organization: "olmlisa"
           token: $SONAR_SECRET
-          
 script:
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=OlmLisa_sample-application-students 
