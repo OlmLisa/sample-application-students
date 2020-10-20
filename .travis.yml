@@ -8,15 +8,21 @@ jobs:
     - stage: publish_backend
       script:
         - docker build -t tp-db ./database
-        - docker push loulmi/tp-db
+      after_success:
+        - echo $DOCKERHUB_PWD | docker login --username $DOCKERHUB_USER --password-stdin
+        - docker push $DOCKERHUB_USER/tp-db
     - stage: publish_httpd
       script:
         - docker build -t tp-http ./httpd
-        - docker push loulmi/tp-http
+      after_success:
+        - echo $DOCKERHUB_PWD | docker login --username $DOCKERHUB_USER --password-stdin
+        - docker push $DOCKERHUB_USER/tp-http
     - stage: publish_api
       script:
         - docker build -t tp-api ./simple-api
-        - docker push loulmi/tp-api
+      after_success:
+        - echo $DOCKERHUB_PWD | docker login --username $DOCKERHUB_USER --password-stdin
+        - docker push $DOCKERHUB_USER/tp-api
     - stage: sonar_scanner
       addons:
         sonarcloud:
