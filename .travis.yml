@@ -7,19 +7,19 @@ jobs:
   include:
     - stage: publish_backend
       script:
-        - docker build -t tp-db ./database
+        - docker build -t $DOCKERHUB_USER/tp-db ./database
       after_success:
         - echo $DOCKERHUB_PWD | docker login --username $DOCKERHUB_USER --password-stdin
         - docker push $DOCKERHUB_USER/tp-db
     - stage: publish_httpd
       script:
-        - docker build -t tp-http ./httpd
+        - docker build -t $DOCKERHUB_USER/tp-http ./httpd
       after_success:
         - echo $DOCKERHUB_PWD | docker login --username $DOCKERHUB_USER --password-stdin
         - docker push $DOCKERHUB_USER/tp-http
     - stage: publish_api
       script:
-        - docker build -t tp-api ./simple-api
+        - docker build -t $DOCKERHUB_USER/tp-api ./simple-api
       after_success:
         - echo $DOCKERHUB_PWD | docker login --username $DOCKERHUB_USER --password-stdin
         - docker push $DOCKERHUB_USER/tp-api
