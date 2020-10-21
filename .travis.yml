@@ -5,6 +5,9 @@ services:
 
 jobs:
   include:
+    - stage: test
+      script:
+        - mvn clean verify
     - stage: publish_backend
       script:
         - docker build -t $DOCKERHUB_USER/tp-db ./database
