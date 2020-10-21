@@ -41,8 +41,8 @@ jobs:
         - sudo apt install software-properties-common
         - sudo apt-add-repository --yes --update ppa:ansible/ansible
         - sudo apt install ansible
-        - ansible-galaxy install geerlingguy.docker
-        - ansible-galaxy install weareinteractive.docker_compose
+        - ansible-galaxy install --roles-path ./roles/ geerlingguy.docker
+        - ansible-galaxy install --roles-path ./roles/ weareinteractive.docker_compose
       script:
         - openssl aes-256-cbc -K $encrypted_ec0015db4ac4_key -iv $encrypted_ec0015db4ac4_iv -in id_rsa.enc -out /tmp/deploy_rsa -d
         - eval "$(ssh-agent -s)"
