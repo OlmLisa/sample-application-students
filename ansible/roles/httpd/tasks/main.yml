@@ -1,1 +1,9 @@
-
+- name: httpd server
+  state: latest
+  docker_container:
+    name: my_apache
+    image: "{{ $DOCKERHUB_USER }}/tp-http"
+    networks:
+      - name: "network"
+    ports:
+      - 80:80
