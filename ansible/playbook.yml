@@ -5,6 +5,7 @@
   roles:
     - geerlingguy.docker
     - weareinteractive.docker_compose
+    - docker_compose
     - httpd
     - firewalld
 ...
