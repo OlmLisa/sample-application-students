@@ -1,5 +1,9 @@
 ---
-   # Install the last docker-compose.yaml
-   -   name: install docker-composer.yaml
-       shell:
-           cmd: docker-compose up
+- name: copy docker_compose yml
+  copy:
+    src: /docker-compose.yml
+    dest: /home/centos
+# Install the last docker-compose.yaml
+- name: install docker-composer.yaml
+  shell:
+    cmd: docker-compose up
