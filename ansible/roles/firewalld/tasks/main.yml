@@ -1,6 +1,15 @@
-- name: Open port 80
-  firewalld:
-    port: 80/tcp
-    permanent: yes
-    immediate: yes
-    state: enabled
+---
+   - name: Install firewalld
+     yum:
+       name: firewalld
+       state: present
+   - name: enable firewalld
+     command: systemctl enable firewalld
+     become: yes
+   # Open port 80/tcp for httpd
+   - name: Open port 80/tcp for httpd
+     firewalld:
+       port: 80/tcp
+       state: enabled
+       permanent: true
+       immediate: true
