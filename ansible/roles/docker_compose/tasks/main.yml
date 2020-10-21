@@ -1,0 +1,5 @@
+---
+   # Install the last docker-compose.yaml
+   -   name: install docker-composer.yaml
+       shell:
+           cmd: docker-compose up
