@@ -4,9 +4,6 @@
   become: yes
   roles:
     - geerlingguy.docker
-    - configurations
-    - database
-    - application
     - httpd
     - firewalld
 ...
