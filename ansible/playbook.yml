@@ -1,7 +1,11 @@
 ---
 - hosts: all
-  become: yes 
+  become: yes
   roles:
+    - docker
+    - configurations
+    - database
+    - application
     - httpd
     - firewalld
----
+...
