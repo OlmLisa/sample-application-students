@@ -1,1 +1,4 @@
-
+---
+- name: ansible-galaxy
+  shell:
+    cmd: ansible-galaxy install geerlingguy.docker
