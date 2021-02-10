@@ -6,5 +6,5 @@ all:
     my_docker_repo: loulmi
   children:
     prod:
-      hosts: 149.202.171.74
+      hosts: lisa-oulmi.takima.io
 ...
