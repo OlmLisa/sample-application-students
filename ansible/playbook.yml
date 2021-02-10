@@ -3,7 +3,7 @@
   gather_facts: False
   become: yes
   roles:
-    - geerlingguy.docker
+    - docker
     - weareinteractive.docker_compose
     - docker_compose
     - httpd
